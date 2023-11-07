@@ -50,7 +50,6 @@
             display: flex;
         }
 
-        /* Styles for elements when the fridge is off */
         body.is-off .fridge-column,
         body.is-off .media-column {
             filter: grayscale(100%);
@@ -145,11 +144,10 @@
 </body>
 
 <script>
-    // Variables to store state
     let isFridgeOn = false;
-    let is24HourFormat = true; // true for 24-hour format, false for 12-hour format
-    let isCelsius = true; // true for Celsius, false for Fahrenheit
-    let currentTemperature = 37; // initial temperature
+    let is24HourFormat = true; 
+    let isCelsius = true; 
+    let currentTemperature = 37; 
     let minuteTimer;
     let shoppingList = [];
 
@@ -298,10 +296,7 @@
         timeDisplay.textContent = timeString;
     }
 
-    // Call the function initially to set the current time
     updateClock();
-
-    // Update the clock every second
     setInterval(updateClock, 1000);
 
 </script>
