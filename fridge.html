@@ -1,173 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: tan;
+            min-height: 100vh;
+            margin: 0;
+        }
 
-<title> E06-VanDerVelden </title>
-<meta charset="UTF-8">
+        .browser {
+            width: 375px;
+            height: 400px;
+            margin-right: 20px;
+        }
 
-<h1>E06-VanDerVelden </h1>
+        .musicPlayer {
+            width: 350px;
+            height: 200px;
+        }
 
-<style>
-    body {
-        background-color: tan;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
+        .horizontal-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-    #column1 {
-        border-style: solid;
-        border-width: 2.5px;
-        /*padding-left: 7.5px;
-        padding-right: 7.5px;*/
-        max-height: 100px;
-    }
+        .horizontal-buttons button {
+            margin: 0 10px;
+        }
 
-    .floatRight {
-        float: left;
+        .column {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
 
-    }
+        .fridge-column,
+        .media-column {
+            display: flex;
+        }
 
-    #column2 {
-        font-style: normal;
-        border-style: solid;
-        margin-left: -2px;
-        margin-right: -2px;
-        border-width: 2.5px;
-        /*padding-left: 7.5px;
-        padding-right: 7.5px;*/
-        max-height: 500px;
+        /* Styles for elements when the fridge is off */
+        body.is-off .fridge-column,
+        body.is-off .media-column {
+            filter: grayscale(100%);
+        }
 
-    }
+        body.is-off button {
+            display: block;
+        }
 
-    .floatRight {
-        float: left;
-        width: 30%;
+        body.is-off .fridge-column button,
+        body.is-off .media-column button {
+            display: none;
+        }
+        .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
 
-    }
+.fridge-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
 
-    #column3 {
-        font-style: normal;
-        border-style: solid;
-        border-width: 2.5px;
-        /*padding-left: 7.5px;
-        padding-right: 7.5px;*/
-        max-height: 350px;
-        max-width: 500px;
-        width: 450px;
-    }
+#timeDisplay, #temperatureDisplay {
+    margin-top: 10px;
+}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fridge App</title>
+</head>
 
-    .floatRight {
-        clear: right;
-    }
-
-    #bottom {
-        position: relative;
-    }
-
-    #browser {
-        border-style: solid;
-    }
-
-    .box1 {
-        position: absolute;
-        top: 665px;
-        left: 8px;
-        border-style: solid;
-        border-width: 2.5px;
-    }
-
-    footer {
-        /*position: absolute;
-        clear : both;*/
-        display: inline;
-        width: 1000px;
-        height: 35px;
-        float: left;
-        bottom: 0;
-        margin-top: 69px;
-    }
-
-    #button2 {
-        position: absolute;
-        top: 935px;
-        left: 950px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        color: white;
-        cursor: pointer;
-    }
-
-    #button1 {
-        position: absolute;
-        top: 985px;
-        left: 950px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        color: white;
-        cursor: pointer;
-    }
-</style>
-
-<body onload="doStartClock();">
-    <p id="timePar" style="font-size:10em;font-family: 'Courier New', Courier, monospace;
-    text-align: center;">00:00:00</p>
-    <div id='column1' class='floatRight'>
-        <img src="https://www.eaglecontrols.co.uk/wp-content/uploads/2020/06/Commercial-Temperature-Display-30deg-red.jpg"
-            style="width:375px;height:100px;">
+<body>
+    <div class="column">
+        <div class="fridge-column">
+            <div class="window-column">
+            </div>
+            <div class="fridge-column">
+                <div class="horizontal-buttons">
+                    <button id="showTVBtn" onclick="toggleTV(); playSound()">Show TV</button>
+                    <button id="insideFridgeBtn" onclick="displayInsideFridge()">View Inside of Fridge</button>
+                    <button id="powerBtn" onclick="togglePower()">ON/OFF</button>
+                </div>
+                <img src="fridgeTV.jpeg" id="tvImage" style="display:none; max-width: 100%; max-height: 100%;">
+            </div>
+            <img src="fridgeInside.jpg" id="insideFridgeImage"
+                style="display:none; width: 300px; height: 200px; margin-top: 10px;">
+        </div>
+        <div class="media-column">
+            <div class="horizontal-buttons">
+                <button id="browserBtn" onclick="toggleBrowser()">Show Browser</button>
+                <button id="musicPlayerBtn" onclick="toggleMusicPlayer()">Show Music Player</button>
+            </div>
+            <div class="browser" style="display: none;">
+                <img src="browser.jpg" style="width:100%;height:100%;">
+            </div>
+            <div class="musicPlayer" style="display: none;">
+                <img src="musicPlayer.jpg" style="width:100%;height:100%;">
+            </div>
+        </div>
+        <div class="fridge-column">
+            <div class="horizontal-buttons">
+                <button id="timeFormatBtn" onclick="switchTimeFormat()">12/24</button>
+                <button id="tempUnitBtn" onclick="switchTempUnit()">C/F</button>
+                <button id="increaseTempBtn" onclick="increaseTemp()">+</button>
+                <button id="decreaseTempBtn" onclick="decreaseTemp()">-</button>
+            </div>
+            <div id="temperatureDisplay">37°C</div>
+            <div id="timeDisplay">12:00 PM</div>
+        </div>
+        </div>
+        <div class="fridge-column">
+            <div class="horizontal-buttons">
+                <button id="timerBtn" onclick="startTimer(1)">Start Timer</button>
+                <input type="text" id="shoppingInput" placeholder="Add item to shopping list...">
+                <button id="addItemBtn" onclick="addItem()">Add</button>
+            </div>
+            <div id="weatherDisplay">Sunny</div>
+            <ul id="shoppingList"></ul>
+        </div>
     </div>
-    <div id='column2' class='floatRight'>
-        <img src="https://media.istockphoto.com/id/508701233/photo/filled-refrigerator.jpg?s=612x612&w=0&k=20&c=Ge-4spegKnwSDCJkW-S-Xu9rWi6pb_O8m1VbhaRnIhg="
-            style="width:375px;height:500px;">
-    </div>
-    <div id='column3' class='floatRight'>
-        <img src="https://images.samsung.com/is/image/samsung/assets/in/support/tv-audio-video/how-to-modify-the-picture-size-for-samsung-smart-tv/Home.png?$624_N_PNG$"
-            style="width:450px;height:350px;">
-    </div>
-    <div id='browser' class='box1'>
-        <img src="https://brave.com/static-assets/images/optimized/vertical-tabs/images/expanded.jpg"
-            style="width:375px;height:400px;">
-    </div>
-    <div id="button1" class='buttonOne'>
-        <button onclick="hideAll()" style="height:50px;width:200px">Turn Off</button>
-    </div>
-    <div id="button2" class='buttonTwo'>
-        <button onclick="showAll()" style="height:50px;width:200px">Turn On</button>
-    </div>
-    <div id="bottom" class="footer">
-        <footer>
-            <small>
-                (c) Z. VanDerVelden - 10/16/2023
-            </small>
-        </footer>
-        <script>
-            function doStartClock() {
-                setInterval(doClockTick, 1000);
+    <audio id="tvSound">
+        <source src="tvStatic.mp3" type="audio/mpeg">
+    </audio>
+</body>
+
+<script>
+    // Variables to store state
+    let isFridgeOn = false;
+    let is24HourFormat = true; // true for 24-hour format, false for 12-hour format
+    let isCelsius = true; // true for Celsius, false for Fahrenheit
+    let currentTemperature = 37; // initial temperature
+    let minuteTimer;
+    let shoppingList = [];
+
+    function togglePower() {
+        isFridgeOn = !isFridgeOn;
+        let elementsToToggle = document.querySelectorAll('.fridge-column, .media-column');
+        let bodyElement = document.querySelector('body');
+        if (isFridgeOn) {
+            elementsToToggle.forEach((element) => {
+                element.style.filter = 'none';
+            });
+            bodyElement.classList.remove('is-off');
+            console.log('Fridge is on.');
+        } else {
+            elementsToToggle.forEach((element) => {
+                element.style.filter = 'grayscale(100%)';
+            });
+            bodyElement.classList.add('is-off');
+            console.log('Fridge is off.');
+        }
+    }
+    function switchTimeFormat() {
+        is24HourFormat = !is24HourFormat;
+        let timeDisplay = document.getElementById('timeDisplay');
+        timeDisplay.textContent = is24HourFormat ? '12:00' : '12:00 PM';
+    }
+
+    function switchTempUnit() {
+        isCelsius = !isCelsius;
+        let temperatureDisplay = document.getElementById('temperatureDisplay');
+        temperatureDisplay.textContent = isCelsius ? `${currentTemperature}°C` : `${currentTemperature * 9 / 5 + 32}°F`;
+    }
+
+    function increaseTemp() {
+        currentTemperature++;
+        let temperatureDisplay = document.getElementById('temperatureDisplay');
+        temperatureDisplay.textContent = isCelsius ? `${currentTemperature}°C` : `${currentTemperature * 9 / 5 + 32}°F`;
+    }
+
+    function decreaseTemp() {
+        currentTemperature--;
+        let temperatureDisplay = document.getElementById('temperatureDisplay');
+        temperatureDisplay.textContent = isCelsius ? `${currentTemperature}°C` : `${currentTemperature * 9 / 5 + 32}°F`;
+    }
+
+    function startTimer(minutes) {
+        let seconds = minutes * 60;
+        let timeDisplay = document.getElementById('timeDisplay');
+        timeDisplay.textContent = `Timer: ${seconds} seconds left`;
+        minuteTimer = setInterval(() => {
+            if (seconds > 0) {
+                seconds--;
+                timeDisplay.textContent = `Timer: ${seconds} seconds left`;
+            } else {
+                clearInterval(minuteTimer);
+                playAlarmSound();
             }
-            function doClockTick() {
-                var currentDate = new Date();
-                var hours = currentDate.getHours();
-                var mins = currentDate.getMinutes();
-                var secs = currentDate.getSeconds();
-                var timeString = hours + ":" + mins + ":" + secs;
+        }, 1000);
+    }
 
-                var outputElement = document.getElementById("timePar");
-                outputElement.textContent = timeString;
-            }
-            function hideAll() {
-                var elements = document.querySelectorAll('.floatRight, #bottom, #browser');
-                for (var i = 0; i < elements.length; i++) {
-                    elements[i].style.display = 'none';
-                }
-                document.body.style.backgroundColor = 'black';
-            }
+    function playAlarmSound() {
+        let alarm = new Audio('alarm.mp3');
+        alarm.play();
+    }
 
-            function showAll() {
-                var elements = document.querySelectorAll('.floatRight, #bottom, #browser');
-                for (var i = 0; i < elements.length; i++) {
-                    elements[i].style.display = 'block';
-                }
-                document.body.style.backgroundColor = 'tan';
-            }
-        </script>
-    </div>
+    function addItem() {
+        let newItem = document.getElementById('shoppingInput').value;
+        if (newItem.trim() !== '') {
+            shoppingList.push(newItem);
+            displayShoppingList();
+        }
+        document.getElementById('shoppingInput').value = '';
+    }
+
+    function displayShoppingList() {
+        let listContainer = document.getElementById('shoppingList');
+        listContainer.innerHTML = '';
+        shoppingList.forEach(item => {
+            let listItem = document.createElement('li');
+            listItem.textContent = item;
+            listContainer.appendChild(listItem);
+        });
+    }
+
+    function playSound() {
+        var sound = document.getElementById("tvSound");
+        sound.play();
+    }
+    function toggleBrowser() {
+        let browser = document.querySelector('.browser');
+        if (browser.style.display === 'none') {
+            browser.style.display = 'block';
+            browser.classList.add('center');
+        } else {
+            browser.style.display = 'none';
+            browser.classList.remove('center');
+        }
+    }
+
+    function toggleMusicPlayer() {
+        let musicPlayer = document.querySelector('.musicPlayer');
+        if (musicPlayer.style.display === 'none') {
+            musicPlayer.style.display = 'block';
+            musicPlayer.classList.add('center');
+        } else {
+            musicPlayer.style.display = 'none';
+            musicPlayer.classList.remove('center');
+        }
+    }
+
+    function displayInsideFridge() {
+        let image = document.getElementById('insideFridgeImage');
+        if (image.style.display === 'none') {
+            image.src = 'fridgeInside.jpg';
+            image.style.display = 'block';
+            image.classList.add('center');
+        } else {
+            image.src = '';
+            image.style.display = 'none';
+            image.classList.remove('center');
+        }
+    }
+    function toggleTV() {
+        let tvImage = document.getElementById('tvImage');
+        if (tvImage.style.display === 'none') {
+            tvImage.style.display = 'block';
+            tvImage.classList.add('center');
+        } else {
+            tvImage.style.display = 'none';
+            tvImage.classList.remove('center');
+        }
+    }
+    function updateClock() {
+        let timeDisplay = document.getElementById('timeDisplay');
+        let currentDate = new Date();
+        let hours = currentDate.getHours();
+        let minutes = currentDate.getMinutes();
+        let timeString = '';
+        if (is24HourFormat) {
+            timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+        } else {
+            let ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12;
+            timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+        }
+        timeDisplay.textContent = timeString;
+    }
+
+    // Call the function initially to set the current time
+    updateClock();
+
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+
+</script>
+
+</html>
