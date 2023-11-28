@@ -1,0 +1,212 @@
+{
+  "courses": [
+    {
+      "courseName": "Intro to Programming",
+      "courseCode": "CMPT101",
+      "instructor": "George Washington",
+      "schedule": "MWF 10:00 AM - 12:00 PM",
+      "building": "Hancock",
+      "location": "Room 0005",
+      "books": [
+        {
+          "bookTitle": "Introduction to Programming",
+          "author": "Steve Jobs",
+          "isbn": "123456789",
+          "publicationYear": 2022,
+          "publisher": "McGraw Hill",
+          "edition": "3"
+        },
+        {
+          "bookTitle": "Introduction to Python",
+          "author": "Python Johnson",
+          "isbn": "987654321",
+          "publicationYear": 2021,
+          "publisher": "Merriam-Webster",
+          "edition": "2"
+        }
+      ]
+    },
+    {
+      "courseName": "Modern Latin America",
+      "courseCode": "Hist 274L",
+      "instructor": "George Lopez",
+      "schedule": "MW 9:30 AM - 10:45 AM",
+      "building": "Lowell Thomas",
+      "location": "Room 326",
+      "books": [
+        {
+          "bookTitle": "Latin American History",
+          "author": "Katherine Johnson",
+          "isbn": "348201269",
+          "publicationYear": 2001,
+          "publisher": "HarperCollins",
+          "edition": "3"
+        },
+        {
+          "bookTitle": "Modern Latin America",
+          "author": "Shakira",
+          "isbn": "34591028",
+          "publicationYear": 1985,
+          "publisher": "Merriam-Webster",
+          "edition": "8"
+        }
+      ]
+    },
+    {
+      "courseName": "Cyroptography",
+      "courseCode": "CMPT436N",
+      "instructor": "Alan Turing",
+      "schedule": "MWF 3:30 PM - 4:45 PM",
+      "building": "Hancock",
+      "location": "Room 0004",
+      "books": [
+        {
+          "bookTitle": "Cryptography for Smart People",
+          "author": "Katherine Johnson",
+          "isbn": "091287347",
+          "publicationYear": 2001,
+          "publisher": "HarperCollins",
+          "edition": "3"
+        },
+        {
+          "bookTitle": "Real-World Cryptography",
+          "author": "David Wong",
+          "isbn": "038749028",
+          "publicationYear": 2003,
+          "publisher": "Manning",
+          "edition": "8"
+        }
+      ]
+    },
+    {
+      "courseName": "Network Security",
+      "courseCode": "CMPT419N",
+      "instructor": "Barack Obama",
+      "schedule": "T 9:30 AM - 12:45 PM",
+      "building": "Hancock",
+      "location": "Room 0005",
+      "books": [
+        {
+          "bookTitle": "Network Security, Firewalls, and VPNS",
+          "author": "J. Michael Stewart",
+          "isbn": "086938793",
+          "publicationYear": 2006,
+          "publisher": "Jones & Barlett",
+          "edition": "3"
+        },
+        {
+          "bookTitle": "Foundations of Information Security",
+          "author": "Jason Andress",
+          "isbn": "657483902",
+          "publicationYear": 2012,
+          "publisher": "McGraw Hill",
+          "edition": "2"
+        }
+      ]
+    },
+    {
+      "courseName": "Intro to Criminal Justice",
+      "courseCode": "CRIM101L",
+      "instructor": "Sherlock Holmes",
+      "schedule": "M 11:00 AM - 12:15 PM",
+      "building": "51 Fulton",
+      "location": "Room 128",
+      "books": [
+        {
+          "bookTitle": "The Fear of too Much Justice",
+          "author": "James Kwak",
+          "isbn": "033741840",
+          "publicationYear": 2019,
+          "publisher": "HarperCollins",
+          "edition": "2"
+        },
+        {
+          "bookTitle": "Introduction to Criminal Justice",
+          "author": "Robert M. Bohm",
+          "isbn": "086938793",
+          "publicationYear": 2012,
+          "publisher": "Merriam-Webster",
+          "edition": "1"
+        }
+      ]
+    },
+    {
+      "courseName": "Italian Crime Fiction",
+      "courseCode": "Lit226L",
+      "instructor": "Stefano Gidari",
+      "schedule": "Th 3:30PM-4:45PM",
+      "building": "Donnelly",
+      "location": "Room 336",
+      "books": [
+        {
+          "bookTitle": "Italian Crime Fiction",
+          "author": "Giuliana Pieri",
+          "isbn": "458023948",
+          "publicationYear": 1998,
+          "publisher": "Everand",
+          "edition": "1"
+        },
+        {
+          "bookTitle": "The Shape of Water",
+          "author": "Andrea Camilleri",
+          "isbn": "086938793",
+          "publicationYear": 2012,
+          "publisher": "Penguin Random House",
+          "edition": "1"
+        }
+      ]
+    },
+    {
+      "courseName": "History of Architecture",
+      "courseCode": "Art110L",
+      "instructor": "Francesco Rossi",
+      "schedule": "TTh 8:00AM-9:15AM",
+      "building": "Lowell Thomas",
+      "location": "Room 212",
+      "books": [
+        {
+          "bookTitle": "Anatomy of a City",
+          "author": "Kate Ascher",
+          "isbn": "391064902",
+          "publicationYear": 2001,
+          "publisher": "Penguin Books",
+          "edition": "3"
+        },
+        {
+          "bookTitle": "The Art of the Architect",
+          "author": "Michael Imber",
+          "isbn": "302849627",
+          "publicationYear": 1999,
+          "publisher": "Triglyph Books",
+          "edition": "4"
+        }
+      ]
+    },
+    {
+      "courseName": "Writing for College",
+      "courseCode": "ENG120L",
+      "instructor": "David Smith",
+      "schedule": "MTh 8:00AM-9:15AM",
+      "building": "Library",
+      "location": "Room 245",
+      "books": [
+        {
+          "bookTitle": "English Literature",
+          "author": "Walter Hobbs",
+          "isbn": "593720582",
+          "publicationYear": 2008,
+          "publisher": "Norton",
+          "edition": "10"
+        },
+        {
+          "bookTitle": "Advanced Literature",
+          "author": "Susan Wills",
+          "isbn": "019274827",
+          "publicationYear": 2010,
+          "publisher": "McGraw Hill",
+          "edition": "8"
+        }
+      ]
+    }
+  ]
+}
