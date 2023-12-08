@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>JSON Data Display</title>
+</head>
+
+<body style="background: linear-gradient(to right, #9F7E6A, #D2BA9F);">
+
+    <nav>
+        <a href="foxbooks.html">Home</a>
+        <a href="course-list.html">Course List</a>
+        <a href="courses.html">Courses Details</a>
+        <a href="404.html">Browse</a>
+        <a href="404.html">Return Books</a>
+        <a href="404.html">Cart</a>
+        <a href="404.html">Profile</a>
+        <a href="404.html">About Us</a>
+
+        <div class="breadcrumbs">
+            <span>Courses</span>
+        </div>
+    </nav>
+
+    <h1>Course Information</h1>
+
+    <div id="courses-container"></div>
+    <img src="studentStudying.png" alt="Student Studying" id="student-image" height="400px" width="400px"
+        style="position: absolute; top: 100px; right:10px;">
+    </div>
+
+    <script>
+        async function fetchAndDisplayData() {
+            try {
+                const response = await fetch("https://raw.githubusercontent.com/ZVanDerVelden/SD330/main/foxbooks.json");
+                const data = await response.json();
+
+                const coursesContainer = document.getElementById('courses-container');
+
+                alert('Click on a course for more details.');
+
+                displayData(data.courses);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function displayData(courses) {
+            const coursesContainer = document.getElementById('courses-container');
+
+            courses.forEach(course => {
+                const courseDiv = document.createElement('div');
+                courseDiv.classList.add('course');
+
+                const detailsDiv = document.createElement('div');
+                detailsDiv.classList.add('course-details');
+                detailsDiv.style.display = 'none';
+
+                detailsDiv.innerHTML = `
+                    <p><strong>Course Code:</strong> ${course.courseCode}</p>
+                    <p><strong>Instructor:</strong> ${course.instructor}</p>
+                    <p><strong>Schedule:</strong> ${course.schedule}</p>
+                    <p><strong>Location:</strong> ${course.building}, ${course.location}</p>
+                    <div class="books-container">
+                        <h3>Books:</h3>
+                        ${course.books.map(book => `
+                            <div class="book">
+                                <p><strong>Title:</strong> ${book.bookTitle}</p>
+                                <p><strong>Author:</strong> ${book.author}</p>
+                                <p><strong>ISBN:</strong> ${book.isbn}</p>
+                                <p><strong>Publication Year:</strong> ${book.publicationYear}</p>
+                                <p><strong>Publisher:</strong> ${book.publisher}</p>
+                                <p><strong>Edition:</strong> ${book.edition}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                courseDiv.innerHTML = `<h2 onclick="toggleCourseDetails(this)">${course.courseName}</h2>`;
+                courseDiv.appendChild(detailsDiv);
+
+                coursesContainer.appendChild(courseDiv);
+            });
+        }
+
+        function toggleCourseDetails(titleElement) {
+            const courseDetails = titleElement.parentElement.querySelector('.course-details');
+            courseDetails.style.display = courseDetails.style.display === 'none' ? 'block' : 'none';
+        }
+
+        fetchAndDisplayData();
+    </script>
+</body>
+<footer>
+    <p>&copy; 2023 FOXBOOKS Bookstore</p>
+</footer>
+
+</html>

@@ -7,6 +7,7 @@
       "schedule": "MWF 10:00 AM - 12:00 PM",
       "building": "Hancock",
       "location": "Room 0005",
+      "subject": "Computing Technology",
       "books": [
         {
           "bookTitle": "Introduction to Programming",
@@ -28,11 +29,12 @@
     },
     {
       "courseName": "Modern Latin America",
-      "courseCode": "Hist 274L",
+      "courseCode": "HIST274L",
       "instructor": "George Lopez",
       "schedule": "MW 9:30 AM - 10:45 AM",
       "building": "Lowell Thomas",
       "location": "Room 326",
+      "subject": "History",
       "books": [
         {
           "bookTitle": "Latin American History",
@@ -59,6 +61,7 @@
       "schedule": "MWF 3:30 PM - 4:45 PM",
       "building": "Hancock",
       "location": "Room 0004",
+      "subject":"Computing Technology",
       "books": [
         {
           "bookTitle": "Cryptography for Smart People",
@@ -85,6 +88,7 @@
       "schedule": "T 9:30 AM - 12:45 PM",
       "building": "Hancock",
       "location": "Room 0005",
+      "subject":"Computing Technology",
       "books": [
         {
           "bookTitle": "Network Security, Firewalls, and VPNS",
@@ -111,6 +115,7 @@
       "schedule": "M 11:00 AM - 12:15 PM",
       "building": "51 Fulton",
       "location": "Room 128",
+      "subject":"Criminal Justice",
       "books": [
         {
           "bookTitle": "The Fear of too Much Justice",
@@ -132,11 +137,12 @@
     },
     {
       "courseName": "Italian Crime Fiction",
-      "courseCode": "Lit226L",
+      "courseCode": "LIT226L",
       "instructor": "Stefano Gidari",
       "schedule": "Th 3:30PM-4:45PM",
       "building": "Donnelly",
       "location": "Room 336",
+      "subject": "English",
       "books": [
         {
           "bookTitle": "Italian Crime Fiction",
@@ -158,11 +164,12 @@
     },
     {
       "courseName": "History of Architecture",
-      "courseCode": "Art110L",
+      "courseCode": "ART110L",
       "instructor": "Francesco Rossi",
       "schedule": "TTh 8:00AM-9:15AM",
       "building": "Lowell Thomas",
       "location": "Room 212",
+      "subject":"History",
       "books": [
         {
           "bookTitle": "Anatomy of a City",
@@ -189,6 +196,7 @@
       "schedule": "MTh 8:00AM-9:15AM",
       "building": "Library",
       "location": "Room 245",
+      "subject":"English",
       "books": [
         {
           "bookTitle": "English Literature",

@@ -63,30 +63,32 @@
         body.is-off .media-column button {
             display: none;
         }
+
         .column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
-}
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
 
-.fridge-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
+        .fridge-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
 
-#timeDisplay{
-    margin-top: 10px;
-    font-size: 24px;
-}
- #temperatureDisplay {
-    margin-top: 10px;
-}
+        #timeDisplay {
+            margin-top: 10px;
+            font-size: 24px;
+        }
+
+        #temperatureDisplay {
+            margin-top: 10px;
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -131,16 +133,16 @@
             <div id="temperatureDisplay">37°C</div>
             <div id="timeDisplay">12:00 PM</div>
         </div>
+    </div>
+    <div class="fridge-column">
+        <div class="horizontal-buttons">
+            <button id="timerBtn" onclick="startTimer(1)">Start Timer</button>
+            <input type="text" id="shoppingInput" placeholder="Add item to shopping list...">
+            <button id="addItemBtn" onclick="addItem()">Add</button>
         </div>
-        <div class="fridge-column">
-            <div class="horizontal-buttons">
-                <button id="timerBtn" onclick="startTimer(1)">Start Timer</button>
-                <input type="text" id="shoppingInput" placeholder="Add item to shopping list...">
-                <button id="addItemBtn" onclick="addItem()">Add</button>
-            </div>
-            <div id="weatherDisplay">Sunny</div>
-            <ul id="shoppingList"></ul>
-        </div>
+        <div id="weatherDisplay">Sunny</div>
+        <ul id="shoppingList"></ul>
+    </div>
     </div>
     <audio id="tvSound">
         <source src="tvStatic.mp3" type="audio/mpeg">
@@ -149,9 +151,9 @@
 
 <script>
     let isFridgeOn = false;
-    let is24HourFormat = true; 
-    let isCelsius = true; 
-    let currentTemperature = 37; 
+    let is24HourFormat = true;
+    let isCelsius = true;
+    let currentTemperature = 37;
     let minuteTimer;
     let shoppingList = [];
 
